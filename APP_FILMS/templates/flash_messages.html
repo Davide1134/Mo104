@@ -1,0 +1,14 @@
+<!-- https://pythonise.com/series/learning-flask/flask-message-flashing -->
+<div class="container" style="margin-top:60px;">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-dismissible alert-{{ category if category != "message" else "info"}}">
+
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <h4 class="alert-heading">{{ category }}</h4>
+                    <p class="mb-0">{{ message }}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}

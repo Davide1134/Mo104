@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %} Afficher GENRES {% endblock %}
+{% block body %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<br>
+			<p>
+				Gestion des Comptes
+			</p>
+            <table class="table table-bordered table-sm">
+            {% if data %}
+                <thead>
+                    <tr>
+                        <th class="align-middle">
+                            ID
+                        </th>
+                        <th class="align-middle">
+                            Prénom
+                        </th>
+						<th class="align-middle">
+                            MDP
+                        </th>
+						<th class="align-middle">
+                            Email
+                        </th>
+                        <th class="align-middle">
+
+                        </th>
+                        <th class="align-middle">
+
+                        </th>
+
+                    </tr>
+                </thead>
+            {% endif %}
+
+            {% for row in data %}
+				<tbody>
+					<tr>
+						<td class="align-middle">
+							{{ row.Id_personne }}
+						</td>
+						<td class="align-middle">
+							{{ row.Nom_personne }}
+						</td>
+						<td class="align-middle" >
+							 *****
+
+						</td>
+						<td class="align-middle">
+							{{ row.Email_personne }}
+						</td>
+
+						<td class="text-center" class="align-middle">
+							<a class="btn btn-warning" href="{{ url_for('genre_update_wtf', Id_personne_btn_edit_html=row.Id_personne) }}" role="button">Edit</a>
+						</td>
+						<td class="text-center" class="align-middle">
+							<a class="btn btn-danger" href="{{ url_for('genre_delete_wtf',Id_personne_btn_delete_html=row.Id_personne) }}" role="button">Delete</a>
+						</td>
+					</tr>
+				</tbody>
+
+
+
+            {% else %}
+				<tbody>
+					<tr>
+						<td>
+							Aucun genre.
+						</td>
+						<td>
+							<a class="btn btn-primary" href="{{ url_for('genres_ajouter_wtf') }}" role="button">Ajouter</a>
+						</td>
+					</tr>
+				</tbody>
+            {% endfor %}
+
+			</table>
+			 <table class="table table-bordered table-sm">
+				 <tbas>
+					<td class="text-center" class="align-middle">
+							<a class="btn btn-primary" href="{{ url_for('genres_ajouter_wtf') }}" role="button">Crée un compte</a>
+					</td>
+				</tbas>
+			 </table>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
